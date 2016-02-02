@@ -1,6 +1,10 @@
 DjangoVE
 ==============================
 
+.. image:: https://badges.gitter.im/djangove/djangove.svg
+   :alt: Join the chat at https://gitter.im/djangove/djangove
+   :target: https://gitter.im/djangove/djangove?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
 DjangoVE, es una iniciativa hecha comunidad fundada por desarrolladores para desarrolladores en Venezuela, enfocados en evangelizar sobre el framework Django y contribuir con la educación de todos los que sean parte y hagan vida en esta nueva comunidad como complemento de lo aprendido en las universidades a través de tutoriales, talleres y eventos.
 
 

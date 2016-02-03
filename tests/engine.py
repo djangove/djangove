@@ -1,13 +1,13 @@
-from subprocess import call
 from os import path
-import hitchpostgres
-import hitchselenium
-import hitchpython
-import hitchserve
-import hitchredis
-import hitchtest
-import hitchsmtp
+from subprocess import call
 
+import hitchpostgres
+import hitchpython
+import hitchredis
+import hitchselenium
+import hitchserve
+import hitchsmtp
+import hitchtest
 
 # Get directory above this file
 PROJECT_DIRECTORY = path.abspath(path.join(path.dirname(__file__), '..'))

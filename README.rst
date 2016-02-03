@@ -1,6 +1,18 @@
 DjangoVE
 ==============================
 
+.. image:: https://requires.io/github/djangove/djangove/requirements.svg?branch=master
+      :target: https://requires.io/github/djangove/djangove/requirements/?branch=master
+      :alt: Requirements Status
+
+.. image:: https://travis-ci.org/djangove/djangove.svg?branch=master
+      :target: https://travis-ci.org/djangove/djangove?branch=master
+      :alt: Build Status
+
+.. image:: https://badges.gitter.im/djangove/djangove.svg
+      :target: https://gitter.im/djangove/djangove?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+      :alt: Join the chat at https://gitter.im/djangove/djangove
+
 DjangoVE, es una iniciativa hecha comunidad fundada por desarrolladores para desarrolladores en Venezuela, enfocados en evangelizar sobre el framework Django y contribuir con la educación de todos los que sean parte y hagan vida en esta nueva comunidad como complemento de lo aprendido en las universidades a través de tutoriales, talleres y eventos.
 
 
@@ -90,26 +102,3 @@ This will download and compile python, postgres and redis and install all python
 Subsequent test runs will be much quicker.
 
 The testing framework runs Django, Celery (if enabled), Postgres, HitchSMTP (a mock SMTP server), Firefox/Selenium and Redis.
-
-
-Deployment
-----------
-
-We providing tools and instructions for deploying using Docker and Heroku.
-
-Heroku
-^^^^^^
-
-.. image:: https://www.herokucdn.com/deploy/button.png
-    :target: https://heroku.com/deploy
-
-See detailed `cookiecutter-django Heroku documentation`_.
-
-.. _`cookiecutter-django Heroku documentation`: http://cookiecutter-django.readthedocs.org/en/latest/deployment-on-heroku.html
-
-Docker
-^^^^^^
-
-See detailed `cookiecutter-django Docker documentation`_.
-
-.. _`cookiecutter-django Docker documentation`: http://cookiecutter-django.readthedocs.org/en/latest/deployment-with-docker.html

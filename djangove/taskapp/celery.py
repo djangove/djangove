@@ -1,10 +1,11 @@
 
 from __future__ import absolute_import
+
 import os
+
 from celery import Celery
 from django.apps import AppConfig
 from django.conf import settings
-
 
 if not settings.configured:
     # set the default Django settings module for the 'celery' program.
@@ -23,8 +24,6 @@ class CeleryConfig(AppConfig):
         # pickle the object when using Windows.
         app.config_from_object('django.conf:settings')
         app.autodiscover_tasks(lambda: settings.INSTALLED_APPS, force=True)
-
-        
 
         if hasattr(settings, 'OPBEAT'):
             from opbeat.contrib.django.models import client as opbeat_client

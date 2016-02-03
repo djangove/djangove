@@ -1,41 +1,39 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views import defaults as default_views
-from django.views.generic import TemplateView
+from wagtail.contrib.wagtailsitemaps.views import sitemap
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from wagtail.wagtailsearch import urls as wagtailsearch_urls
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name="home"),
-    url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name="about"),
-
-    # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),
 
-    # CMS APP
-    url(r'^cms/', include(wagtailadmin_urls)),
+    url(r'^admin-cms/', include(wagtailadmin_urls)),
+    url(r'^search/', include(wagtailsearch_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
-    url(r'^pages/', include(wagtail_urls)),
 
-    # User management
-    url(r'^users/', include("djangove.users.urls", namespace="users")),
-    url(r'^accounts/', include('allauth.urls')),
+    url('^sitemap\.xml$', sitemap),
 
-    # Your stuff: custom urls includes go here
+    # For anything not caught by a more specific rule above, hand over to
+    # Wagtail's serving mechanism
+    url(r'', include(wagtail_urls)),
+]
 
-
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
-    # This allows the error pages to be debugged during development, just visit
-    # these url in browser to see how these error pages look like.
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    from django.views.generic.base import RedirectView
+
+    urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += [
+        url(r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'favicon.ico', permanent=True)),
         url(r'^400/$', default_views.bad_request, kwargs={'exception': Exception("Bad Request!")}),
         url(r'^403/$', default_views.permission_denied, kwargs={'exception': Exception("Permissin Denied")}),
         url(r'^404/$', default_views.page_not_found, kwargs={'exception': Exception("Page not Found")}),

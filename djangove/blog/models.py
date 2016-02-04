@@ -97,6 +97,8 @@ class BlogPage(Page):
         index.SearchField('body'),
     )
 
+    api_fields = ('title', 'intro', 'body', 'date', 'feed_image')
+
     @property
     def blog_index(self):
         # Find closest ancestor which is a blog index

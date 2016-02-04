@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^search/', include(wagtailsearch_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^api-cms/', include(wagtailapi_urls)),
-    url(r'^sitemap.xml/$', sitemap),
+    url(r'^sitemap\.xml$', sitemap),
 
     # Api Example in app
     # url(r'^', include('djangove.events.urls')),

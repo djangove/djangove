@@ -33,22 +33,31 @@ DJANGO_APPS = (
 
     # Admin
     'django.contrib.admin',
+
+    # Rest
+    'rest_framework',
 )
 THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts
-    'allauth',  # registration
-    'allauth.account',  # registration
-    'allauth.socialaccount',  # registration
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    'djangove.users',  # custom users app
-    # Your stuff: custom apps go here
+    'djangove.utils',
+    'djangove.pages',
+    'djangove.blog',
+    'djangove.events',
+    'djangove.contact',
 )
 
 # CMS APP
 CMS_APPS = (
+    'compressor',
+    'taggit',
+    'modelcluster',
+
+    'wagtail.contrib.wagtailsitemaps',
+    'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
@@ -60,10 +69,7 @@ CMS_APPS = (
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
-
-    'modelcluster',
-    'compressor',
-    'taggit',
+    'wagtail.contrib.wagtailapi',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -83,12 +89,6 @@ MIDDLEWARE_CLASSES = (
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 )
-
-# MIGRATIONS CONFIGURATION
-# ------------------------------------------------------------------------------
-MIGRATION_MODULES = {
-    'sites': 'djangove.contrib.sites.migrations'
-}
 
 # DEBUG
 # ------------------------------------------------------------------------------
@@ -226,7 +226,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # ------------------------------------------------------------------------------
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 # Some really nice defaults
@@ -236,12 +235,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_ADAPTER = 'djangove.users.adapter.AccountAdapter'
 SOCIALACCOUNT_ADAPTER = 'djangove.users.adapter.SocialAccountAdapter'
 ACCOUNT_ALLOW_REGISTRATION = True
-
-# Custom user app defaults
-# Select the correct user model
-AUTH_USER_MODEL = 'users.User'
-LOGIN_REDIRECT_URL = 'users:redirect'
-LOGIN_URL = 'account_login'
 
 # SLUGLIFIER
 AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
@@ -255,9 +248,14 @@ BROKER_URL = env("CELERY_BROKER_URL", default='django://')
 
 
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
-ADMIN_URL = r'^admin/'
+ADMIN_URL = r'^admin-django/'
 
 # Your common stuff: Below this line define 3rd party library settings
 
 # CMS APP
+LOGIN_URL = 'wagtailadmin_login'
+LOGIN_REDIRECT_URL = 'wagtailadmin_home'
+
 WAGTAIL_SITE_NAME = 'DjangoVE'
+
+WAGTAILSEARCH_RESULTS_TEMPLATE = 'utils/tags/search/search_results.html'

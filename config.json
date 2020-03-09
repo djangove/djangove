@@ -1,0 +1,4 @@
+{
+	"browserSync": false,
+	"target":"./dist/*.html"
+}

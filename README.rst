@@ -13,17 +13,19 @@ DjangoVE
       :target: https://gitter.im/djangove/djangove?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
       :alt: Join the chat at https://gitter.im/djangove/djangove
 
-DjangoVE, es una iniciativa hecha comunidad fundada por desarrolladores para desarrolladores en Venezuela, enfocados en evangelizar sobre el framework Django y contribuir con la educación de todos los que sean parte y hagan vida en esta nueva comunidad como complemento de lo aprendido en las universidades a través de tutoriales, talleres y eventos.
-
+Sitio web de DjangoVE
 
 LICENSE: BSD
 
-Settings
+Based on
 ------------
 
-Moved to settings_.
+* cookiecutter: https://github.com/audreyr/cookiecutter
+* cookiecutter-django: https://github.com/pydanny/cookiecutter-django
+* wagtail-cookiecutter-foundation: https://github.com/chrisdev/wagtail-cookiecutter-foundation
 
-.. _settings: http://cookiecutter-django.readthedocs.org/en/latest/settings.html
+* Wagtail CMS: https://wagtail.io
+* Zurb Foundation: https://foundation.zurb.com
 
 Basic Commands
 --------------
@@ -48,14 +50,6 @@ To run the tests, check your test coverage, and generate an HTML coverage report
     $ coverage html
     $ open htmlcov/index.html
 
-Live reloading and Sass CSS compilation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Moved to `Live reloading and SASS compilation`_.
-
-.. _`Live reloading and SASS compilation`: http://cookiecutter-django.readthedocs.org/en/latest/live-reloading-and-sass-compilation.html
-
-
 
 Celery
 ^^^^^^
@@ -70,10 +64,6 @@ To run a celery worker:
     celery -A djangove.taskapp worker -l info
 
 Please note: For Celerys import magic to work, it is important *where* the celery commands are run. If you are in the same folder with *manage.py*, you should be right.
-
-
-
-
 
 
 

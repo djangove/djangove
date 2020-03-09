@@ -63,3 +63,7 @@ tests/.hitch
 
 # MailHog binary
 mailhog
+
+# Bower
+bower_components
+djangove/static/libs

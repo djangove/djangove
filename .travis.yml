@@ -1,7 +1,14 @@
 notifications:
   email: false
 
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/.hitchpkg
+  apt: true
+
 sudo: true
+
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq build-essential gettext python-dev zlib1g-dev libpq-dev xvfb
@@ -10,15 +17,21 @@ before_install:
   - sudo apt-get install -qq firefox automake libtool libreadline6 libreadline6-dev libreadline-dev
   - sudo apt-get install -qq libsqlite3-dev libxml2 libxml2-dev libssl-dev libbz2-dev wget curl llvm
 language: python
+
 python:
 - "3.5"
 
 install:
+  - "pip install codecov"
   - "pip install flake8"
   - "pip install isort"
   - "pip install hitch"
   - "cd tests"
   - "hitch init"
+
+after_success:
+  - codecov
+
 script:
   - "cd .."
   - "isort -c -rc -df"

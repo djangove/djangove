@@ -6,7 +6,7 @@ wheel==0.26.0
 
 # Bleeding edge Django
 django==1.9.2
-djangorestframework==3.3.2
+djangorestframework==3.9.1
 django-libsass==0.6
 
 # Configuration
